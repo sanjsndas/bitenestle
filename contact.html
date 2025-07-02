@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - BiteNestle</title>
+    <style>
+        /* Global Styles */
+        :root {
+            --olive-green: #6B8E23;
+            --terracotta: #E2725B;
+            --cream: #F5F5DC;
+            --dark-brown: #5C4033;
+            --light-brown: #D2B48C;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--cream);
+            color: var(--dark-brown);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--olive-green);
+            color: white;
+            padding: 20px 0;
+            border-bottom: 5px solid var(--terracotta);
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            font-family: 'Georgia', serif;
+            margin: 0;
+            text-align: center;
+        }
+        
+        .slogan {
+            text-align: center;
+            font-style: italic;
+            margin-top: 5px;
+            font-size: 1.2rem;
+        }
+        
+        /* Navigation Styles */
+        nav {
+            background-color: var(--dark-brown);
+            padding: 15px 0;
+        }
+        
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        nav ul li {
+            margin: 0 15px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            background-color: var(--terracotta);
+        }
+        
+        /* Main Content Styles */
+        .page-title {
+            text-align: center;
+            margin: 30px 0;
+            color: var(--olive-green);
+            font-size: 2.2rem;
+        }
+        
+        .intro-text {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            font-size: 1.1rem;
+        }
+        
+        /* Contact Content */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .contact-info-section {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .contact-form-section {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .contact-section-title {
+            color: var(--olive-green);
+            border-bottom: 2px solid var(--light-brown);
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+        
+        .contact-point {
+            margin-bottom: 25px;
+        }
+        
+        .contact-point h3 {
+            color: var(--terracotta);
+            margin-bottom: 10px;
+        }
+        
+        /* Contact Form Styles */
+        .contact-form {
+            display: grid;
+            gap: 20px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-group label {
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        
+        .form-control {
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background-color: var(--terracotta);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background-color: var(--olive-green);
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+        }
+        
+        .faq-item {
+            margin-bottom: 30px;
+        }
+        
+        .faq-question {
+            color: var(--olive-green);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        /* Team Section */
+        .team-section {
+            background-color: rgba(107, 142, 35, 0.1);
+            padding: 40px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .team-member {
+            text-align: center;
+        }
+        
+        .team-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border: 5px solid var(--light-brown);
+        }
+        
+        .team-name {
+            color: var(--olive-green);
+            margin-bottom: 5px;
+        }
+        
+        .team-position {
+            color: var(--terracotta);
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+        
+        /* Footer Styles */
+        footer {
+            background-color: var(--dark-brown);
+            color: white;
+            padding: 40px 0 20px;
+            margin-top: 50px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+        
+        .footer-section h3 {
+            color: var(--terracotta);
+            margin-top: 0;
+            border-bottom: 1px solid var(--terracotta);
+            padding-bottom: 10px;
+        }
+        
+        .footer-section ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-section ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .footer-section ul li a:hover {
+            text-decoration: underline;
+        }
+        
+        .contact-info {
+            margin-top: 15px;
+            line-height: 1.8;
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 5px 0;
+            }
+            
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="logo">BiteNestle</h1>
+            <p class="slogan">Comfort Meals That Feel Like Home</p>
+        </div>
+    </header>
+    
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="privacy.html">Privacy</a></li>
+                <li><a href="terms.html">Terms</a></li>
+                <li><a href="cookies.html">Cookies</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <main class="container">
+        <h1 class="page-title">Contact BiteNestle</h1>
+        <p class="intro-text">We'd love to hear from you! Whether you have questions about our recipes, need cooking advice, or want to share your feedback, our team is here to help. Below you'll find all the ways to get in touch with us.</p>
+        
+        <div class="contact-content">
+            <div class="contact-info-section">
+                <h2 class="contact-section-title">Our Contact Information</h2>
+                
+                <div class="contact-point">
+                    <h3>General Inquiries</h3>
+                    <p>For general questions about our website, recipes, or services, please email us at hello@bitenestle.com or call our customer service line at (555) 123-4567 during business hours (9am-5pm PST, Monday-Friday). Our team typically responds to emails within 24-48 hours. For faster response, try our live chat feature available on weekdays.</p>
+                </div>
+                
+                <div class="contact-point">
+                    <h3>Mailing Address</h3>
+                    <p>BiteNestle Headquarters<br>
+                    123 Comfort Food Lane<br>
+                    San Francisco, CA 94107<br>
+                    United States<br><br>
+                    Please note that this is our corporate office and not a retail location. We don't accept walk-in visitors, but you're welcome to send correspondence to this address.</p>
+                </div>
+                
+                <div class="contact-point">
+                    <h3>Press & Media</h3>
+                    <p>Members of the press seeking information, interviews, or media kits should contact our PR team at press@bitenestle.com. Please include your name, media outlet, deadline, and specific requests in your inquiry. We're happy to provide high-resolution images, company backgrounders, and arrange interviews with our culinary experts.</p>
+                </div>
+                
+                <div class="contact-point">
+                    <h3>Advertising & Partnerships</h3>
+                    <p>For advertising opportunities, sponsored content, or brand partnerships, please reach out to our partnerships team at partnerships@bitenestle.com. Include details about your company, proposed collaboration, and any relevant materials. We value authentic partnerships that align with our mission of bringing comforting meals to families.</p>
+                </div>
+                
+                <div class="contact-point">
+                    <h3>Recipe Submissions</h3>
+                    <p>We welcome recipe submissions from our community! To submit your original recipes for potential inclusion on our site, please use our recipe submission form at bitenestle.com/submit-recipe. Include a list of ingredients, step-by-step instructions, preparation time, and any personal story behind the recipe. We review all submissions but cannot guarantee publication.</p>
+                </div>
+            </div>
+            
+            <div class="contact-form-section">
+                <h2 class="contact-section-title">Send Us a Message</h2>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <select id="subject" class="form-control" required>
+                            <option value="">Select a topic</option>
+                            <option value="general">General Inquiry</option>
+                            <option value="recipe">Recipe Question</option>
+                            <option value="technical">Technical Support</option>
+                            <option value="feedback">Feedback/Suggestion</option>
+                            <option value="business">Business Inquiry</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" class="form-control" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+                
+                <div style="margin-top: 30px;">
+                    <h3>What Happens Next?</h3>
+                    <p>After submitting your message, you'll receive an automatic confirmation email with a ticket number for reference. Our team will review your inquiry and respond as quickly as possible, typically within 1-2 business days. For urgent matters, please call our customer service line. We appreciate your patience and look forward to assisting you!</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="faq-section">
+            <h2 class="contact-section-title">Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <h3 class="faq-question">1. How can I reset my password?</h3>
+                <p>If you've forgotten your password, click the "Forgot Password" link on the login page. You'll receive an email with instructions to reset your password. The link in the email will expire after 24 hours for security reasons. If you don't see the email, check your spam folder. For additional help, contact our support team with your registered email address and we'll assist you in regaining access to your account.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h3 class="faq-question">2. Can I submit my own recipes to BiteNestle?</h3>
+                <p>Absolutely! We love featuring recipes from our community. Use our recipe submission form (available in your account dashboard or at bitenestle.com/submit-recipe) to share your original recipes. Please include detailed instructions, ingredient lists, and any personal story about the recipe. Our editorial team reviews all submissions and may contact you for additional information. While we can't publish every submission, we appreciate all contributions.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h3 class="faq-question">3. How do I report an error in a recipe?</h3>
+                <p>We strive for accuracy in all our recipes. If you find an error, please use the "Report Error" button at the bottom of each recipe page or email corrections@bitenestle.com with the recipe title, specific error details, and your suggested correction. Our culinary team will review the report and make necessary updates. We appreciate your help in maintaining the quality of our recipes for all users.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h3 class="faq-question">4. Do you offer nutrition information for your recipes?</h3>
+                <p>Many of our recipes include approximate nutrition information calculated from standard ingredient databases. However, these are estimates only, as actual nutritional content can vary based on specific ingredients used and portion sizes. We recommend consulting a nutritionist for precise dietary needs. You can find nutrition information (when available) at the bottom of recipe pages. We're working to add this information to more recipes over time.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h3 class="faq-question">5. How can I unsubscribe from emails?</h3>
+                <p>You can manage your email preferences at any time by clicking the "Unsubscribe" link at the bottom of any email from us or by adjusting your notification settings in your account dashboard. Please note that even if you unsubscribe from marketing emails, you may still receive important service-related communications about your account. If you're having trouble unsubscribing, contact our support team and we'll assist you.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h3 class="faq-question">6. Are your recipes suitable for people with food allergies?</h3>
+                <p>While we include allergy information when possible, we cannot guarantee that any recipe is completely free of specific allergens due to variations in ingredients and preparation methods. Always check ingredient labels carefully and modify recipes as needed for your dietary requirements. We're working to add more allergy-friendly filters and tags to help you find suitable recipes. For severe allergies, consult with your healthcare provider before trying new recipes.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h3 class="faq-question">7. Can I use your recipes in my cookbook/blog/restaurant menu?</h3>
+                <p>Our recipes are protected by copyright, but we often grant permission for limited non-commercial use with proper attribution. For personal blogs or family cookbooks, you may use up to 2 recipes with clear credit to "BiteNestle.com" and a link back to the original recipe. For commercial uses (including restaurant menus, published cookbooks, or large-scale reproduction), please contact us at permissions@bitenestle.com to discuss licensing options.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h3 class="faq-question">8. How do I save recipes to my account?</h3>
+                <p>To save recipes, simply click the "Save to My Recipes" button (heart icon) on any recipe page. You must be logged in to your account to use this feature. Saved recipes will appear in your "My Recipe Box" section of your account dashboard. You can organize saved recipes into custom collections and add personal notes. This feature is available to all registered users at no cost.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h3 class="faq-question">9. Why can't I see comments on recipes anymore?</h3>
+                <p>We periodically update our community features to improve user experience. If you can't see comments, it may be because: (1) comments are temporarily disabled for maintenance, (2) the recipe is new and doesn't have comments yet, or (3) your account has community restrictions due to previous violations of our guidelines. If you believe this is an error, please contact our support team with details about the recipe and your account information.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h3 class="faq-question">10. Do you have a mobile app?</h3>
+                <p>Yes! The BiteNestle app is available for both iOS and Android devices. You can download it from the Apple App Store or Google Play Store. The app includes all the features of our website plus exclusive mobile-only content and tools like meal planning, shopping lists, and step-by-step cooking mode. The app is free to download with optional premium features available through in-app purchase.</p>
+            </div>
+        </div>
+        
+        <div class="team-section">
+            <h2 class="contact-section-title">Meet Our Team</h2>
+            <p>Behind every recipe is a team of passionate food lovers dedicated to bringing comfort to your kitchen. Here are some of the people who make BiteNestle possible:</p>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Maria Rodriguez" class="team-photo">
+                    <h3 class="team-name">Maria Rodriguez</h3>
+                    <p class="team-position">Head Chef & Recipe Developer</p>
+                    <p>With 15 years of culinary experience, Maria ensures every recipe meets our standards for taste and approachability.</p>
+                </div>
+                
+                <div class="team-member">
+                    <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="James Wilson" class="team-photo">
+                    <h3 class="team-name">James Wilson</h3>
+                    <p class="team-position">Customer Support Lead</p>
+                    <p>James and his team are here to answer your questions and help you get the most from BiteNestle.</p>
+                </div>
+                
+                <div class="team-member">
+                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Sarah Chen" class="team-photo">
+                    <h3 class="team-name">Sarah Chen</h3>
+                    <p class="team-position">Nutrition Specialist</p>
+                    <p>Sarah works to provide accurate nutrition information and develops our dietary-specific recipe collections.</p>
+                </div>
+                
+                <div class="team-member">
+                    <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="David Kim" class="team-photo">
+                    <h3 class="team-name">David Kim</h3>
+                    <p class="team-position">Community Manager</p>
+                    <p>David fosters our cooking community and ensures our platform remains a welcoming space for all food lovers.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin: 40px 0;">
+            <h2>Still Have Questions?</h2>
+            <p>Don't hesitate to reach out - we're here to help you create comforting meals and memories in your kitchen.</p>
+            <a href="#contact-form" class="submit-btn" style="display: inline-block; margin-top: 15px;">Contact Us Now</a>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About BiteNestle</h3>
+                    <p>BiteNestle is your home for comforting, reliable recipes that feel like a warm hug. We specialize in Italian classics and global comfort foods that families love.</p>
+                    <div class="contact-info">
+                        <p><strong>Address:</strong><br>
+                        123 Comfort Food Lane<br>
+                        San Francisco, CA 94107<br>
+                        United States</p>
+                        <p><strong>Phone:</strong> (555) 123-4567</p>
+                        <p><strong>Email:</strong> hello@bitenestle.com</p>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="privacy.html">Privacy</a></li>
+                        <li><a href="terms.html">Terms</a></li>
+                        <li><a href="cookies.html">Cookies</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Connect With Us</h3>
+                    <ul>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">Pinterest</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">YouTube</a></li>
+                        <li><a href="#">TikTok</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 BiteNestle. All rights reserved. "Comfort Meals That Feel Like Home"</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

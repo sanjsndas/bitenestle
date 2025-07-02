@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BiteNestle Blog - Comfort Food Stories & Tips</title>
+    <style>
+        /* Global Styles */
+        :root {
+            --olive-green: #6B8E23;
+            --terracotta: #E2725B;
+            --cream: #F5F5DC;
+            --dark-brown: #5C4033;
+            --light-brown: #D2B48C;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--cream);
+            color: var(--dark-brown);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--olive-green);
+            color: white;
+            padding: 20px 0;
+            border-bottom: 5px solid var(--terracotta);
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            font-family: 'Georgia', serif;
+            margin: 0;
+            text-align: center;
+        }
+        
+        .slogan {
+            text-align: center;
+            font-style: italic;
+            margin-top: 5px;
+            font-size: 1.2rem;
+        }
+        
+        /* Navigation Styles */
+        nav {
+            background-color: var(--dark-brown);
+            padding: 15px 0;
+        }
+        
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        nav ul li {
+            margin: 0 15px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            background-color: var(--terracotta);
+        }
+        
+        /* Main Content Styles */
+        .page-title {
+            text-align: center;
+            margin: 30px 0;
+            color: var(--olive-green);
+            font-size: 2.2rem;
+        }
+        
+        .intro-text {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            font-size: 1.1rem;
+        }
+        
+        /* Blog Grid */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin: 30px 0;
+        }
+        
+        .blog-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .blog-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .blog-content {
+            padding: 20px;
+        }
+        
+        .blog-title {
+            color: var(--olive-green);
+            margin-top: 0;
+        }
+        
+        .blog-meta {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+            font-size: 0.9rem;
+            color: var(--terracotta);
+        }
+        
+        .blog-category {
+            display: inline-block;
+            background-color: var(--light-brown);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin-right: 5px;
+        }
+        
+        .blog-excerpt {
+            margin: 15px 0;
+        }
+        
+        .read-more {
+            display: inline-block;
+            background-color: var(--terracotta);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .read-more:hover {
+            background-color: var(--olive-green);
+        }
+        
+        /* Featured Post */
+        .featured-post {
+            background-color: rgba(107, 142, 35, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            margin: 40px 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: center;
+        }
+        
+        .featured-img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .featured-content {
+            padding: 10px;
+        }
+        
+        .featured-title {
+            color: var(--olive-green);
+            font-size: 1.8rem;
+            margin-top: 0;
+        }
+        
+        .featured-excerpt {
+            font-size: 1.1rem;
+            margin: 20px 0;
+        }
+        
+        /* Newsletter Signup */
+        .newsletter {
+            background-color: var(--dark-brown);
+            color: white;
+            padding: 40px;
+            border-radius: 10px;
+            margin: 40px 0;
+            text-align: center;
+        }
+        
+        .newsletter h2 {
+            margin-top: 0;
+            color: var(--terracotta);
+        }
+        
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 20px auto 0;
+        }
+        
+        .newsletter-input {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 5px 0 0 5px;
+            font-size: 1rem;
+        }
+        
+        .newsletter-button {
+            background-color: var(--terracotta);
+            color: white;
+            border: none;
+            padding: 0 20px;
+            border-radius: 0 5px 5px 0;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .newsletter-button:hover {
+            background-color: var(--olive-green);
+        }
+        
+        /* Footer Styles */
+        footer {
+            background-color: var(--dark-brown);
+            color: white;
+            padding: 40px 0 20px;
+            margin-top: 50px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+        
+        .footer-section h3 {
+            color: var(--terracotta);
+            margin-top: 0;
+            border-bottom: 1px solid var(--terracotta);
+            padding-bottom: 10px;
+        }
+        
+        .footer-section ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-section ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .footer-section ul li a:hover {
+            text-decoration: underline;
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 5px 0;
+            }
+            
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .featured-post {
+                grid-template-columns: 1fr;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-input {
+                border-radius: 5px;
+                margin-bottom: 10px;
+            }
+            
+            .newsletter-button {
+                border-radius: 5px;
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="logo">BiteNestle</h1>
+            <p class="slogan">Comfort Meals That Feel Like Home</p>
+        </div>
+    </header>
+    
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="privacy.html">Privacy</a></li>
+                <li><a href="terms.html">Terms</a></li>
+                <li><a href="cookies.html">Cookies</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <main class="container">
+        <h1 class="page-title">BiteNestle Blog</h1>
+        <p class="intro-text">Discover comforting stories, cooking tips, and family traditions from our cozy kitchen to yours. Here we share our love for food that warms the heart and brings people together.</p>
+        
+        <!-- Featured Blog Post -->
+        <div class="featured-post">
+            <img src="B1.avif" alt="Family Cooking Together" class="featured-img">
+            <div class="featured-content">
+                <span class="blog-category">Family Traditions</span>
+                <h2 class="featured-title">How Cooking Together Strengthens Family Bonds</h2>
+                <p class="blog-meta">March 15, 2023 • 8 min read</p>
+                <p class="featured-excerpt">In our fast-paced world, the kitchen remains one of the last places where families can connect meaningfully. Discover how making meals together creates lasting memories and teaches valuable life lessons...</p>
+                <a href="#" class="read-more">Read Full Article</a>
+            </div>
+        </div>
+        
+        <!-- Blog Grid -->
+        <div class="blog-grid">
+            <div class="blog-card">
+                <img src="B2.avif" alt="Pasta Making" class="blog-img">
+                <div class="blog-content">
+                    <span class="blog-category">Cooking Tips</span>
+                    <h3 class="blog-title">The Secret to Perfect Homemade Pasta Every Time</h3>
+                    <p class="blog-meta">April 2, 2023 • 5 min read</p>
+                    <p class="blog-excerpt">Making pasta from scratch might seem intimidating, but with these simple tips, you'll be rolling out perfect noodles like a nonna in no time...</p>
+                    <a href="#" class="read-more">Read More</a>
+                </div>
+            </div>
+            
+            <div class="blog-card">
+                <img src="B3.avif" alt="Soup Ingredients" class="blog-img">
+                <div class="blog-content">
+                    <span class="blog-category">Seasonal Cooking</span>
+                    <h3 class="blog-title">5 Comforting Soup Recipes for Chilly Evenings</h3>
+                    <p class="blog-meta">March 28, 2023 • 6 min read</p>
+                    <p class="blog-excerpt">When the temperature drops, nothing beats a warm bowl of soup. These five recipes range from classic chicken noodle to a surprising twist on tomato basil...</p>
+                    <a href="#" class="read-more">Read More</a>
+                </div>
+            </div>
+            
+            <div class="blog-card">
+                <img src="R3.avif" alt="Pizza Ingredients" class="blog-img">
+                <div class="blog-content">
+                    <span class="blog-category">Recipe History</span>
+                    <h3 class="blog-title">The Fascinating History of Pizza: From Naples to Your Table</h3>
+                    <p class="blog-meta">March 20, 2023 • 7 min read</p>
+                    <p class="blog-excerpt">Pizza has come a long way from its humble beginnings as peasant food in Naples. Discover how this simple flatbread became a global phenomenon...</p>
+                    <a href="#" class="read-more">Read More</a>
+                </div>
+            </div>
+            
+            <div class="blog-card">
+                <div class="blog-content">
+                    <span class="blog-category">Kitchen Essentials</span>
+                    <h3 class="blog-title">10 Must-Have Tools for Every Comfort Food Kitchen</h3>
+                    <p class="blog-meta">March 10, 2023 • 4 min read</p>
+                    <p class="blog-excerpt">Stocking your kitchen doesn't require fancy gadgets. These 10 basic tools will help you make nearly every comforting dish with ease and joy...</p>
+                    <a href="#" class="read-more">Read More</a>
+                </div>
+            </div>
+            
+            <div class="blog-card">
+                <div class="blog-content">
+                    <span class="blog-category">Family Meals</span>
+                    <h3 class="blog-title">Bringing Back the Family Dinner: Why It Matters</h3>
+                    <p class="blog-meta">March 5, 2023 • 5 min read</p>
+                    <p class="blog-excerpt">Research shows family dinners benefit children in surprising ways. Learn how to make this tradition work for your busy household...</p>
+                    <a href="#" class="read-more">Read More</a>
+                </div>
+            </div>
+            
+            <div class="blog-card">
+                <div class="blog-content">
+                    <span class="blog-category">Budget Cooking</span>
+                    <h3 class="blog-title">Delicious Meals on a Budget: Comfort Food Edition</h3>
+                    <p class="blog-meta">February 28, 2023 • 6 min read</p>
+                    <p class="blog-excerpt">You don't need expensive ingredients to make satisfying meals. These recipes maximize flavor while minimizing cost...</p>
+                    <a href="#" class="read-more">Read More</a>
+                </div>
+            </div>
+            
+            <div class="blog-card">
+                <div class="blog-content">
+                    <span class="blog-category">Cooking Basics</span>
+                    <h3 class="blog-title">The Science of Why Comfort Food Makes Us Feel Better</h3>
+                    <p class="blog-meta">February 22, 2023 • 7 min read</p>
+                    <p class="blog-excerpt">There's actual scientific reasons why mac and cheese or chicken soup make us feel warm inside. Discover the psychology and physiology behind comfort foods...</p>
+                    <a href="#" class="read-more">Read More</a>
+                </div>
+            </div>
+            
+            <div class="blog-card">
+                <div class="blog-content">
+                    <span class="blog-category">Recipe Makeover</span>
+                    <h3 class="blog-title">Healthier Versions of Your Favorite Comfort Foods</h3>
+                    <p class="blog-meta">February 15, 2023 • 5 min read</p>
+                    <p class="blog-excerpt">You don't have to give up your favorite dishes to eat healthier. These smart swaps maintain the comforting qualities while boosting nutrition...</p>
+                    <a href="#" class="read-more">Read More</a>
+                </div>
+            </div>
+            
+            <div class="blog-card">
+                <div class="blog-content">
+                    <span class="blog-category">Meal Planning</span>
+                    <h3 class="blog-title">Weekly Meal Prep for Comfort Food Lovers</h3>
+                    <p class="blog-meta">February 8, 2023 • 6 min read</p>
+                    <p class="blog-excerpt">Yes, you can meal prep comforting dishes! This guide shows you how to prepare a week's worth of satisfying meals in just a few hours...</p>
+                    <a href="#" class="read-more">Read More</a>
+                </div>
+            </div>
+            
+            <div class="blog-card">
+                <div class="blog-content">
+                    <span class="blog-category">Cooking Memories</span>
+                    <h3 class="blog-title">The Recipes That Defined My Childhood</h3>
+                    <p class="blog-meta">February 1, 2023 • 8 min read</p>
+                    <p class="blog-excerpt">Our editor shares the nostalgic dishes that shaped her love of cooking and the stories behind these family favorites...</p>
+                    <a href="#" class="read-more">Read More</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Newsletter Signup -->
+        <div class="newsletter">
+            <h2>Join Our Comfort Food Community</h2>
+            <p>Get weekly recipes, cooking tips, and heartwarming stories delivered to your inbox.</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Your email address" class="newsletter-input" required>
+                <button type="submit" class="newsletter-button">Subscribe</button>
+            </form>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About BiteNestle</h3>
+                    <p>BiteNestle is your home for comforting, reliable recipes that feel like a warm hug. We specialize in Italian classics and global comfort foods that families love.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="cookies.html">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 BiteNestle. All rights reserved. "Comfort Meals That Feel Like Home"</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
